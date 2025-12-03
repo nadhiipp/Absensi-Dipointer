@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../config/theme.dart';
 import '../utils/helpers.dart';
 
 class ActivityItem extends StatelessWidget {
