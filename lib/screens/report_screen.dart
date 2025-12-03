@@ -117,134 +117,103 @@ class _ReportScreenState extends State<ReportScreen> {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
       appBar: AppBar(
-        title: const Text('Laporan Bulanan'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            setState(() {
+              _currentIndex = 0;
+            });
+          },
+        ),
+        title: const Text('Loan Management'),
         backgroundColor: AppTheme.primaryGreen,
-        automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.calendar_month),
-            onPressed: _showMonthPicker,
+          Stack(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications_outlined, color: Colors.white),
+                onPressed: () {},
+              ),
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: AppTheme.errorColor,
+                    shape: BoxShape.circle,
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 8,
+                    minHeight: 8,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // Period Header
+          // Eligibility Status Card
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              gradient: AppTheme.primaryGradient,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                const Icon(
-                  Icons.assessment,
-                  color: Colors.white,
-                  size: 48,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  '${Helpers.getMonthName(_selectedMonth)} $_selectedYear',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
                 ),
               ],
             ),
-          ),
-          
-          const SizedBox(height: 24),
-          
-          // Attendance Percentage
-          CustomCard(
             child: Column(
               children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppTheme.errorColor.withOpacity(0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.warning_amber_rounded,
+                    color: AppTheme.errorColor,
+                    size: 36,
+                  ),
+                ),
+                const SizedBox(height: 12),
                 const Text(
-                  'Persentase Kehadiran',
+                  'Not Eligible Now',
                   style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                     color: AppTheme.textPrimary,
                   ),
                 ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  height: 200,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      PieChart(
-                        PieChartData(
-                          sectionsSpace: 2,
-                          centerSpaceRadius: 60,
-                          sections: [
-                            PieChartSectionData(
-                              value: _totalPresent.toDouble(),
-                              color: AppTheme.successColor,
-                              title: '',
-                              radius: 30,
-                            ),
-                            PieChartSectionData(
-                              value: _totalPermission.toDouble(),
-                              color: AppTheme.warningColor,
-                              title: '',
-                              radius: 30,
-                            ),
-                            PieChartSectionData(
-                              value: _totalAbsent.toDouble(),
-                              color: AppTheme.errorColor,
-                              title: '',
-                              radius: 30,
-                            ),
-                            PieChartSectionData(
-                              value: _totalLate.toDouble(),
-                              color: const Color(0xFFFF9800),
-                              title: '',
-                              radius: 30,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            '${_attendancePercentage.toStringAsFixed(1)}%',
-                            style: const TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: AppTheme.primaryGreen,
-                            ),
-                          ),
-                          const Text(
-                            'Kehadiran',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: AppTheme.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                const SizedBox(height: 8),
+                Text(
+                  'Anda belum memenuhi syarat untuk mengajukan pinjaman. Silakan tingkatkan statistik kehadiran Anda.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[600],
+                    height: 1.4,
                   ),
                 ),
-                const SizedBox(height: 16),
-                _buildLegend(),
               ],
             ),
           ),
           
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           
-          // Statistics Cards
+          // Eligibility Overview
           const Text(
-            'Ringkasan Statistik',
+            'Eligibility Overview',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: AppTheme.textPrimary,
             ),
@@ -252,217 +221,40 @@ class _ReportScreenState extends State<ReportScreen> {
           
           const SizedBox(height: 12),
           
-          GridView.count(
-            crossAxisCount: 2,
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            childAspectRatio: 1.3,
+          Row(
             children: [
-              StatCard(
-                title: 'Hari Kerja',
-                value: '$_totalWorkingDays',
-                icon: Icons.calendar_today,
-                color: AppTheme.infoColor,
+              Expanded(
+                child: _buildEligibilityCard('Balance', '\$180', Icons.account_balance_wallet),
               ),
-              StatCard(
-                title: 'Hadir',
-                value: '$_totalPresent',
-                icon: Icons.check_circle,
-                color: AppTheme.successColor,
+              const SizedBox(width: 12),
+              Expanded(
+                child: _buildEligibilityCard('Loan Funds', '0', Icons.monetization_on),
               ),
-              StatCard(
-                title: 'Izin',
-                value: '$_totalPermission',
-                icon: Icons.event_note,
-                color: AppTheme.warningColor,
-              ),
-              StatCard(
-                title: 'Alpha',
-                value: '$_totalAbsent',
-                icon: Icons.cancel,
-                color: AppTheme.errorColor,
+              const SizedBox(width: 12),
+              Expanded(
+                child: _buildEligibilityCard('Unpaid', '0', Icons.receipt_long),
               ),
             ],
           ),
           
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           
-          // Weekly Chart
-          CustomCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Kehadiran Mingguan',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  height: 200,
-                  child: BarChart(
-                    BarChartData(
-                      alignment: BarChartAlignment.spaceAround,
-                      maxY: 5,
-                      barTouchData: BarTouchData(enabled: false),
-                      titlesData: FlTitlesData(
-                        show: true,
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: (value, meta) {
-                              const days = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum'];
-                              if (value.toInt() < days.length) {
-                                return Text(
-                                  days[value.toInt()],
-                                  style: const TextStyle(fontSize: 12),
-                                );
-                              }
-                              return const Text('');
-                            },
-                          ),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            reservedSize: 30,
-                            getTitlesWidget: (value, meta) {
-                              return Text(
-                                value.toInt().toString(),
-                                style: const TextStyle(fontSize: 12),
-                              );
-                            },
-                          ),
-                        ),
-                        topTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                      ),
-                      gridData: FlGridData(
-                        show: true,
-                        drawVerticalLine: false,
-                      ),
-                      borderData: FlBorderData(show: false),
-                      barGroups: [
-                        BarChartGroupData(x: 0, barRods: [
-                          BarChartRodData(
-                            toY: 4,
-                            color: AppTheme.primaryGreen,
-                            width: 20,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(4),
-                            ),
-                          ),
-                        ]),
-                        BarChartGroupData(x: 1, barRods: [
-                          BarChartRodData(
-                            toY: 4,
-                            color: AppTheme.primaryGreen,
-                            width: 20,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(4),
-                            ),
-                          ),
-                        ]),
-                        BarChartGroupData(x: 2, barRods: [
-                          BarChartRodData(
-                            toY: 4,
-                            color: AppTheme.primaryGreen,
-                            width: 20,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(4),
-                            ),
-                          ),
-                        ]),
-                        BarChartGroupData(x: 3, barRods: [
-                          BarChartRodData(
-                            toY: 4,
-                            color: AppTheme.primaryGreen,
-                            width: 20,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(4),
-                            ),
-                          ),
-                        ]),
-                        BarChartGroupData(x: 4, barRods: [
-                          BarChartRodData(
-                            toY: 4,
-                            color: AppTheme.primaryGreen,
-                            width: 20,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(4),
-                            ),
-                          ),
-                        ]),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+          // Recent Activity
+          const Text(
+            'Recent Activity',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppTheme.textPrimary,
             ),
           ),
           
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           
-          // Summary Text
-          CustomCard(
-            color: AppTheme.primaryGreen.withOpacity(0.1),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: const [
-                    Icon(
-                      Icons.info_outline,
-                      color: AppTheme.primaryGreen,
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      'Ringkasan',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.primaryGreen,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Dari $_totalWorkingDays hari kerja di bulan ${Helpers.getMonthName(_selectedMonth)}, Anda hadir $_totalPresent hari dengan persentase kehadiran ${_attendancePercentage.toStringAsFixed(1)}%.',
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: AppTheme.textPrimary,
-                    height: 1.5,
-                  ),
-                ),
-                if (_totalLate > 0) ...[
-                  const SizedBox(height: 8),
-                  Text(
-                    'Terdapat $_totalLate kali keterlambatan.',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Color(0xFFFF9800),
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ),
+          _buildActivityItem('Hadir', '02 Des 2025', 'Tepat Waktu', Icons.check_circle),
+          _buildActivityItem('Hadir', '01 Des 2025', 'Tepat Waktu', Icons.check_circle),
+          _buildActivityItem('Izin', '30 Nov 2025', 'Pending', Icons.event_note),
+          _buildActivityItem('Terlambat', '29 Nov 2025', 'Terlambat', Icons.access_time),
         ],
       ),
       bottomNavigationBar: BottomNav(
@@ -476,53 +268,125 @@ class _ReportScreenState extends State<ReportScreen> {
     );
   }
   
-  Widget _buildLegend() {
-    return Column(
-      children: [
-        _buildLegendItem('Hadir', AppTheme.successColor, _totalPresent),
-        const SizedBox(height: 8),
-        _buildLegendItem('Izin', AppTheme.warningColor, _totalPermission),
-        const SizedBox(height: 8),
-        _buildLegendItem('Alpha', AppTheme.errorColor, _totalAbsent),
-        const SizedBox(height: 8),
-        _buildLegendItem('Terlambat', const Color(0xFFFF9800), _totalLate),
-      ],
+  Widget _buildEligibilityCard(String title, String value, IconData icon) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppTheme.primaryGreen.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, color: AppTheme.primaryGreen, size: 22),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppTheme.textPrimary,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppTheme.textSecondary,
+            ),
+          ),
+        ],
+      ),
     );
   }
   
-  Widget _buildLegendItem(String label, Color color, int value) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 16,
-              height: 16,
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: const TextStyle(
-                fontSize: 14,
-                color: AppTheme.textPrimary,
-              ),
-            ),
-          ],
-        ),
-        Text(
-          '$value hari',
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: AppTheme.textPrimary,
+  Widget _buildActivityItem(String title, String date, String status, IconData icon) {
+    final statusColor = Helpers.getStatusColor(status);
+    
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
           ),
-        ),
-      ],
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppTheme.primaryGreen.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              icon,
+              color: AppTheme.primaryGreen,
+              size: 22,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: AppTheme.textPrimary,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  date,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppTheme.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: statusColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text(
+              status,
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: statusColor,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
