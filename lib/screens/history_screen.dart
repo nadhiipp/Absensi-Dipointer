@@ -230,7 +230,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ),
                     ),
                     child: const Text(
-                      'Add Deposite',
+                      'Add Deposit',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,

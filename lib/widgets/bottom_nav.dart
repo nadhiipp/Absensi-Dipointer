@@ -30,16 +30,21 @@ class BottomNav extends StatelessWidget {
           Container(
             height: 3,
             color: Colors.transparent,
-            child: Row(
-              children: List.generate(5, (index) {
-                return Expanded(
-                  child: Container(
-                    color: currentIndex == index 
-                        ? AppTheme.primaryGreen 
-                        : Colors.transparent,
-                  ),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                const itemCount = 5; // Number of navigation items
+                return Row(
+                  children: List.generate(itemCount, (index) {
+                    return Expanded(
+                      child: Container(
+                        color: currentIndex == index 
+                            ? AppTheme.primaryGreen 
+                            : Colors.transparent,
+                      ),
+                    );
+                  }),
                 );
-              }),
+              },
             ),
           ),
           BottomNavigationBar(
