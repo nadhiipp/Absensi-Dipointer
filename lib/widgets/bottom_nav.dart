@@ -17,47 +17,74 @@ class BottomNav extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
         ],
       ),
-      child: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: onTap,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppTheme.primaryGreen,
-        unselectedItemColor: Colors.grey,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'Home',
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Active indicator line
+          Container(
+            height: 3,
+            color: Colors.transparent,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                const itemCount = 5; // Number of navigation items
+                return Row(
+                  children: List.generate(itemCount, (index) {
+                    return Expanded(
+                      child: Container(
+                        color: currentIndex == index 
+                            ? AppTheme.primaryGreen 
+                            : Colors.transparent,
+                      ),
+                    );
+                  }),
+                );
+              },
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history_outlined),
-            activeIcon: Icon(Icons.history),
-            label: 'Riwayat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event_note_outlined),
-            activeIcon: Icon(Icons.event_note),
-            label: 'Izin',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.assessment_outlined),
-            activeIcon: Icon(Icons.assessment),
-            label: 'Laporan',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: 'Profile',
+          BottomNavigationBar(
+            currentIndex: currentIndex,
+            onTap: onTap,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: AppTheme.primaryGreen,
+            unselectedItemColor: AppTheme.textGrey,
+            selectedFontSize: 11,
+            unselectedFontSize: 11,
+            elevation: 0,
+            backgroundColor: Colors.white,
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined, size: 26),
+                activeIcon: Icon(Icons.home, size: 26),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_balance_wallet_outlined, size: 26),
+                activeIcon: Icon(Icons.account_balance_wallet, size: 26),
+                label: 'Riwayat',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.volunteer_activism_outlined, size: 26),
+                activeIcon: Icon(Icons.volunteer_activism, size: 26),
+                label: 'Izin',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.request_quote_outlined, size: 26),
+                activeIcon: Icon(Icons.request_quote, size: 26),
+                label: 'Laporan',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline, size: 26),
+                activeIcon: Icon(Icons.person, size: 26),
+                label: 'Profile',
+              ),
+            ],
           ),
         ],
       ),

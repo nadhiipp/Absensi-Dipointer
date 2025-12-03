@@ -85,282 +85,348 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
+              // Header with white background
               Container(
+                color: Colors.white,
                 padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  gradient: AppTheme.primaryGradient,
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                Helpers.getGreeting(),
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white70,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                _userName,
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundColor: Colors.white,
-                          child: const Icon(
-                            Icons.person,
-                            size: 32,
-                            color: AppTheme.primaryGreen,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundColor: AppTheme.lightGreen,
+                      child: const Icon(
+                        Icons.person,
+                        size: 28,
+                        color: AppTheme.primaryGreen,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(
-                            Icons.calendar_today,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          const SizedBox(width: 8),
                           Text(
-                            _currentDate,
+                            '$_userName 👋',
                             style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.textPrimary,
                             ),
                           ),
-                          const SizedBox(width: 16),
-                          const Icon(
-                            Icons.access_time,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            _currentTime,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                          const SizedBox(height: 2),
+                          const Text(
+                            'Welcome back to Absensi',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: AppTheme.textSecondary,
                             ),
                           ),
                         ],
                       ),
                     ),
+                    Stack(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.notifications_outlined),
+                          iconSize: 28,
+                          color: AppTheme.textPrimary,
+                          onPressed: () {},
+                        ),
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                              color: AppTheme.errorColor,
+                              shape: BoxShape.circle,
+                            ),
+                            constraints: const BoxConstraints(
+                              minWidth: 8,
+                              minHeight: 8,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
               
-              // Statistics Cards
+              // Main Balance Card
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Statistik Absensi Bulan Ini',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.textPrimary,
+                    // Balance Card with gradient (matches reference)
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        gradient: AppTheme.cardGradient,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      childAspectRatio: 1.3,
-                      children: [
-                        StatCard(
-                          title: 'Total Hadir',
-                          value: '$_totalPresent',
-                          icon: Icons.check_circle,
-                          color: AppTheme.successColor,
-                          gradient: AppTheme.cardGradient,
-                        ),
-                        StatCard(
-                          title: 'Izin',
-                          value: '$_totalPermission',
-                          icon: Icons.event_note,
-                          color: AppTheme.warningColor,
-                        ),
-                        StatCard(
-                          title: 'Alpha',
-                          value: '$_totalAbsent',
-                          icon: Icons.cancel,
-                          color: AppTheme.errorColor,
-                        ),
-                        StatCard(
-                          title: 'Terlambat',
-                          value: '$_totalLate',
-                          icon: Icons.access_time,
-                          color: const Color(0xFFFF9800),
-                        ),
-                      ],
-                    ),
-                    
-                    const SizedBox(height: 24),
-                    
-                    // Quick Actions
-                    const Text(
-                      'Quick Actions',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.textPrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomCard(
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.attendance);
-                            },
-                            gradient: AppTheme.primaryGradient,
-                            child: Column(
-                              children: const [
-                                Icon(
-                                  Icons.login,
+                      child: Stack(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.2),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Icon(
+                                      Icons.account_balance_wallet_outlined,
+                                      color: Colors.white,
+                                      size: 24,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                'Statistik Kehadiran',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white.withOpacity(0.9),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '$_totalPresent Hari',
+                                style: const TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  size: 32,
                                 ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Clock In',
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                'Total kehadiran bulan ini',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Positioned(
+                            right: -10,
+                            top: 0,
+                            bottom: 0,
+                            child: RotatedBox(
+                              quarterTurns: 3,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Text(
+                                  'KEHADIRAN',
                                   style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
+                                    letterSpacing: 1.5,
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: CustomCard(
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.attendance);
-                            },
-                            color: Colors.white,
-                            child: Column(
-                              children: const [
-                                Icon(
-                                  Icons.logout,
-                                  color: AppTheme.primaryGreen,
-                                  size: 32,
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Clock Out',
-                                  style: TextStyle(
-                                    color: AppTheme.primaryGreen,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: CustomCard(
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.leaveRequest);
-                            },
-                            color: Colors.white,
-                            child: Column(
-                              children: const [
-                                Icon(
-                                  Icons.event_available,
-                                  color: AppTheme.primaryGreen,
-                                  size: 32,
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Request Izin',
-                                  style: TextStyle(
-                                    color: AppTheme.primaryGreen,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     
                     const SizedBox(height: 24),
                     
-                    // Recent Activity
-                    const Text(
-                      'Aktivitas Terbaru',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.textPrimary,
+                    // Quick Action Section (matches reference)
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              Text(
+                                'Quick Action',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppTheme.textPrimary,
+                                ),
+                              ),
+                              Text(
+                                'All Actions',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: AppTheme.primaryGreen,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(context, AppRoutes.attendance);
+                                  },
+                                  borderRadius: BorderRadius.circular(24),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 12,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.lightGreen,
+                                      borderRadius: BorderRadius.circular(24),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: const [
+                                        Icon(
+                                          Icons.add_circle_outline,
+                                          color: AppTheme.primaryGreen,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          'Clock In',
+                                          style: TextStyle(
+                                            color: AppTheme.primaryGreen,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(context, AppRoutes.leaveRequest);
+                                  },
+                                  borderRadius: BorderRadius.circular(24),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 12,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.lightGreen,
+                                      borderRadius: BorderRadius.circular(24),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: const [
+                                        Icon(
+                                          Icons.arrow_forward,
+                                          color: AppTheme.primaryGreen,
+                                          size: 20,
+                                        ),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          'Request Izin',
+                                          style: TextStyle(
+                                            color: AppTheme.primaryGreen,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    
+                    const SizedBox(height: 24),
+                    
+                    // Recent Activity (matches reference)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'Recent Activity',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: AppTheme.textPrimary,
+                          ),
+                        ),
+                        Text(
+                          'See All',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: AppTheme.primaryGreen,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 12),
                     ActivityItem(
-                      title: 'Clock In',
-                      subtitle: 'Berhasil absen masuk',
-                      status: 'Success',
-                      dateTime: DateTime.now().subtract(const Duration(hours: 2)),
-                      icon: Icons.login,
+                      title: 'Hadir',
+                      subtitle: '02 Des 2025',
+                      status: 'Tepat Waktu',
+                      dateTime: DateTime.now().subtract(const Duration(days: 1)),
+                      icon: Icons.check_circle,
                     ),
                     ActivityItem(
-                      title: 'Clock Out',
-                      subtitle: 'Berhasil absen pulang',
-                      status: 'Success',
-                      dateTime: DateTime.now().subtract(const Duration(days: 1, hours: 8)),
-                      icon: Icons.logout,
-                    ),
-                    ActivityItem(
-                      title: 'Request Izin',
-                      subtitle: 'Izin sakit - Menunggu persetujuan',
-                      status: 'Pending',
+                      title: 'Hadir',
+                      subtitle: '01 Des 2025',
+                      status: 'Tepat Waktu',
                       dateTime: DateTime.now().subtract(const Duration(days: 2)),
+                      icon: Icons.check_circle,
+                    ),
+                    ActivityItem(
+                      title: 'Izin',
+                      subtitle: '30 Nov 2025',
+                      status: 'Pending',
+                      dateTime: DateTime.now().subtract(const Duration(days: 3)),
                       icon: Icons.event_note,
+                    ),
+                    ActivityItem(
+                      title: 'Terlambat',
+                      subtitle: '29 Nov 2025',
+                      status: 'Terlambat',
+                      dateTime: DateTime.now().subtract(const Duration(days: 4)),
+                      icon: Icons.access_time,
                     ),
                   ],
                 ),
