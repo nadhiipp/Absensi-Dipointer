@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const Color primaryGreen = Color(0xFF2E7D32);
-  static const Color lightGreen = Color(0xFF4CAF50);
-  static const Color darkGreen = Color(0xFF1B5E20);
-  static const Color accentGreen = Color(0xFF66BB6A);
+  // Exact colors from reference
+  static const Color primaryGreen = Color(0xFF1B5E20); // Dark green from reference
+  static const Color secondaryGreen = Color(0xFF4CAF50); // Medium green
+  static const Color lightGreen = Color(0xFFE8F5E9); // Light green background
+  static const Color darkGreen = Color(0xFF1B5E20); // Same as primary
   
   static const Color successColor = Color(0xFF4CAF50);
   static const Color warningColor = Color(0xFFFFA726);
@@ -16,15 +17,17 @@ class AppTheme {
   static const Color cardColor = Color(0xFFFFFFFF);
   static const Color textPrimary = Color(0xFF212121);
   static const Color textSecondary = Color(0xFF757575);
+  static const Color textGrey = Color(0xFF9E9E9E);
   
+  // Gradient for main balance card - dark green to medium green
   static LinearGradient get primaryGradient => const LinearGradient(
-    colors: [primaryGreen, lightGreen],
+    colors: [Color(0xFF1B5E20), Color(0xFF2E7D32)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
   
   static LinearGradient get cardGradient => const LinearGradient(
-    colors: [lightGreen, accentGreen],
+    colors: [Color(0xFF1B5E20), Color(0xFF4CAF50)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
