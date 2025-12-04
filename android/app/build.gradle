@@ -1,38 +1,65 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    id "org.jetbrains.kotlin.android"
     id "dev.flutter.flutter-gradle-plugin"
 }
 
 android {
-    namespace = "com.example.absensi_dipointer"
-    compileSdk = 34
-    ndkVersion = flutter.ndkVersion
+    namespace "com.example.absensi_dipointer"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.absensi_dipointer"
+        minSdk 21
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+    }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
-
-    defaultConfig {
-        applicationId = "com.example.absensi_dipointer"
-        minSdk = 21
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
+        jvmTarget = "17"
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.debug
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
 
 flutter {
-    source = "../.."
+    source "../.."
+}
+
+// TASK AJAIB INI YANG MENYEMBUHKAN ERROR "failed to produce an .apk"
+def flutterOutDir = file("$buildDir/outputs/flutter-apk")
+def cliOutDir = new File(rootDir.parentFile, "build/app/outputs/flutter-apk")
+
+tasks.register("syncFlutterApks", Copy) {
+    from(flutterOutDir)
+    into(cliOutDir)
+    doFirst {
+        cliOutDir.mkdirs()
+        println "[patch] syncFlutterApks: from=${flutterOutDir} -> to=${cliOutDir}"
+    }
+    doLast {
+        println "[patch] syncFlutterApks: done"
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains("assembleDebug") || task.name.contains("bundleDebug")) {
+        task.finalizedBy syncFlutterApks
+    }
 }

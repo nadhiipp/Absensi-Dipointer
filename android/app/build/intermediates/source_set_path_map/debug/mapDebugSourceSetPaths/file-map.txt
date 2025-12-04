@@ -1,0 +1,53 @@
+com.example.absensi_dipointer.app-pngs-0 C:\FlutterProjects\Absensi-Dipointer\android\app\build\generated\res\pngs\debug
+com.example.absensi_dipointer.app-resValues-1 C:\FlutterProjects\Absensi-Dipointer\android\app\build\generated\res\resValues\debug
+com.example.absensi_dipointer.app-packageDebugResources-2 C:\FlutterProjects\Absensi-Dipointer\android\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.absensi_dipointer.app-packageDebugResources-3 C:\FlutterProjects\Absensi-Dipointer\android\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.absensi_dipointer.app-debug-4 C:\FlutterProjects\Absensi-Dipointer\android\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.absensi_dipointer.app-debug-5 C:\FlutterProjects\Absensi-Dipointer\android\app\src\debug\res
+com.example.absensi_dipointer.app-main-6 C:\FlutterProjects\Absensi-Dipointer\android\app\src\main\res
+com.example.absensi_dipointer.app-jetified-activity-1.10.1-7 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\09d9511dc8c282cd81680f74382bf531\transformed\jetified-activity-1.10.1\res
+com.example.absensi_dipointer.app-jetified-profileinstaller-1.4.0-8 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\0ef0a3cff48145914065dffe150885f6\transformed\jetified-profileinstaller-1.4.0\res
+com.example.absensi_dipointer.app-jetified-datastore-preferences-release-9 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\13a977fb2622ba1108038b720119ae36\transformed\jetified-datastore-preferences-release\res
+com.example.absensi_dipointer.app-jetified-fragment-ktx-1.7.1-10 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\1682b213b56b274543d47ec49107c0f0\transformed\jetified-fragment-ktx-1.7.1\res
+com.example.absensi_dipointer.app-jetified-play-services-base-18.3.0-11 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\1723d725e9fbd0e125f3f9dac6e20b85\transformed\jetified-play-services-base-18.3.0\res
+com.example.absensi_dipointer.app-lifecycle-runtime-2.7.0-12 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\1ccb0c3f93aad20caa22958d21105ec8\transformed\lifecycle-runtime-2.7.0\res
+com.example.absensi_dipointer.app-jetified-lifecycle-viewmodel-ktx-2.7.0-13 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\27632e078091c7ab5166be988e1cfc21\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\res
+com.example.absensi_dipointer.app-jetified-lifecycle-process-2.7.0-14 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\3190e5104127a30090e1d26989fea275\transformed\jetified-lifecycle-process-2.7.0\res
+com.example.absensi_dipointer.app-jetified-window-1.2.0-15 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\34c177fbe2b98a5cb7ac7c069caee0a0\transformed\jetified-window-1.2.0\res
+com.example.absensi_dipointer.app-jetified-core-ktx-1.13.1-16 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\358816466a47424069d9cd3ab431ff14\transformed\jetified-core-ktx-1.13.1\res
+com.example.absensi_dipointer.app-appcompat-1.1.0-17 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\3c744e2904621aee5f3a70326cc11c03\transformed\appcompat-1.1.0\res
+com.example.absensi_dipointer.app-jetified-lifecycle-livedata-core-ktx-2.7.0-18 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\415d269f94f895c2747b105c54f12d45\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+com.example.absensi_dipointer.app-coordinatorlayout-1.0.0-19 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\490dd9fc811a934baf0d7f4cc72d9724\transformed\coordinatorlayout-1.0.0\res
+com.example.absensi_dipointer.app-preference-1.2.1-20 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\4d0a731cf08b486da39c309270ee45a6\transformed\preference-1.2.1\res
+com.example.absensi_dipointer.app-core-runtime-2.2.0-21 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\4d9eb225ce1d217614c5b97abebde9c1\transformed\core-runtime-2.2.0\res
+com.example.absensi_dipointer.app-jetified-lifecycle-runtime-ktx-2.7.0-22 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\552320a244855fbe63df56ffb35fee6d\transformed\jetified-lifecycle-runtime-ktx-2.7.0\res
+com.example.absensi_dipointer.app-jetified-annotation-experimental-1.4.0-23 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\593364c2e25be9ac3442e2f99c35fde9\transformed\jetified-annotation-experimental-1.4.0\res
+com.example.absensi_dipointer.app-jetified-datastore-core-release-24 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\695e6fc5a4ddd4b0723ba0cb00471730\transformed\jetified-datastore-core-release\res
+com.example.absensi_dipointer.app-lifecycle-livedata-2.7.0-25 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\7413c4c76eba7a4e5e0a6968371362fa\transformed\lifecycle-livedata-2.7.0\res
+com.example.absensi_dipointer.app-fragment-1.7.1-26 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\7acc9c8f76608f384960b80ee4bb7dea\transformed\fragment-1.7.1\res
+com.example.absensi_dipointer.app-jetified-core-viewtree-1.0.0-27 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\86b51f24a8f351512af7792371c58605\transformed\jetified-core-viewtree-1.0.0\res
+com.example.absensi_dipointer.app-jetified-activity-ktx-1.10.1-28 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\88964d728ea97dc922217ee95aa199c5\transformed\jetified-activity-ktx-1.10.1\res
+com.example.absensi_dipointer.app-jetified-datastore-release-29 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\8fd3f9b1633073bc76dd12d2f7f2e13e\transformed\jetified-datastore-release\res
+com.example.absensi_dipointer.app-jetified-tracing-1.2.0-30 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\96442538e13e8c859ab4c892a86ae4c2\transformed\jetified-tracing-1.2.0\res
+com.example.absensi_dipointer.app-slidingpanelayout-1.2.0-31 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\97c0fa7f0945132c9e46ac3663051de0\transformed\slidingpanelayout-1.2.0\res
+com.example.absensi_dipointer.app-lifecycle-viewmodel-2.7.0-32 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\9c0eac964aa7f7a4817dc5472275e17a\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.absensi_dipointer.app-jetified-core-1.0.0-33 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\b49c4de2b4c44fd3e0e1fb919acf2169\transformed\jetified-core-1.0.0\res
+com.example.absensi_dipointer.app-core-1.13.1-34 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\b5378c9ff7b998ff6ac97e57a72e6ca3\transformed\core-1.13.1\res
+com.example.absensi_dipointer.app-jetified-savedstate-1.2.1-35 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\b8dbce1b953f3b7ab82c5ac726196889\transformed\jetified-savedstate-1.2.1\res
+com.example.absensi_dipointer.app-recyclerview-1.0.0-36 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\b9d9a171f324219423cdb6a04971644c\transformed\recyclerview-1.0.0\res
+com.example.absensi_dipointer.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-37 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\c059854cc771d87565952ba2af32cdd4\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.absensi_dipointer.app-jetified-savedstate-ktx-1.2.1-38 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\c537a4bc713fd7e6206f1bff82fca122\transformed\jetified-savedstate-ktx-1.2.1\res
+com.example.absensi_dipointer.app-jetified-play-services-basement-18.3.0-39 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\c59cb5de3e8686440b2cfbfc3f9afc69\transformed\jetified-play-services-basement-18.3.0\res
+com.example.absensi_dipointer.app-jetified-startup-runtime-1.1.1-40 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\c6fc80c8faf59ffc0620f7d1a3f9fcaa\transformed\jetified-startup-runtime-1.1.1\res
+com.example.absensi_dipointer.app-transition-1.4.1-41 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\e0ea23d3a3d9579265512393da032dfd\transformed\transition-1.4.1\res
+com.example.absensi_dipointer.app-jetified-datastore-preferences-core-release-42 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\e9d1e829c63a4fa934d7d1fbbfd6ed19\transformed\jetified-datastore-preferences-core-release\res
+com.example.absensi_dipointer.app-jetified-appcompat-resources-1.1.0-43 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\ef5e464604e43cd2ed957179b79a2e45\transformed\jetified-appcompat-resources-1.1.0\res
+com.example.absensi_dipointer.app-lifecycle-livedata-core-2.7.0-44 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\f0e9d6266572ce7f29758da4b8fdf383\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.absensi_dipointer.app-jetified-window-java-1.2.0-45 C:\Users\nadhip rahmatilah\.gradle\caches\8.10\transforms\fd391d0c9984b0a4f0d6ea80544ad2ae\transformed\jetified-window-java-1.2.0\res
+com.example.absensi_dipointer.app-debug-46 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android-0.10.10+6\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.absensi_dipointer.app-debug-47 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.31\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.absensi_dipointer.app-debug-48 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.2\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.absensi_dipointer.app-debug-49 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+1\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.absensi_dipointer.app-debug-50 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.19\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.absensi_dipointer.app-debug-51 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.1.0\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.absensi_dipointer.app-debug-52 C:\Users\nadhip rahmatilah\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.4.13\android\build\intermediates\packaged_res\debug\packageDebugResources
